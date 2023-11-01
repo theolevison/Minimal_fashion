@@ -6,7 +6,9 @@ public class Outfit {
 	private Torso[] torsoClothing;
 	private Legs[] legClothing;
 	
-	public Outfit(){
+	public Outfit(Torso[] torsoClothing, Legs[] legClothing){
+		this.torsoClothing = torsoClothing;
+		this.legClothing = legClothing;
 		calculateTemperatureRating();
 		name = "random outfit";
 	}
