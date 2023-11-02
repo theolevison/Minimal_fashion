@@ -4,6 +4,25 @@
   <artifactId>Minimal_fashion</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
+  <properties>
+    <aws.java.sdk.version>2.21.3</aws.java.sdk.version>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>software.amazon.awssdk</groupId>
+        <artifactId>bom</artifactId>
+        <version>${aws.java.sdk.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  
   <dependencies>
 	<dependency>
 	    <groupId>org.junit.jupiter</groupId>
@@ -11,6 +30,34 @@
 	    <version>5.10.0</version>
 	    <scope>test</scope>
 	</dependency>
+    
+    <dependency>
+        <groupId>software.amazon.awssdk</groupId>
+        <artifactId>dynamodb</artifactId>
+    </dependency>
+    
+    <dependency>
+        <groupId>software.amazon.awssdk</groupId>
+        <artifactId>dynamodb-enhanced</artifactId>
+    </dependency>
+    
+    <dependency>
+       <groupId>software.amazon.awssdk</groupId>
+       <artifactId>sso</artifactId>
+    </dependency>
+    
+    <dependency>
+	    <groupId>software.amazon.awssdk</groupId>
+	    <artifactId>ssooidc</artifactId>
+	</dependency>
+    
+    <dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-simple</artifactId>
+	    <version>1.6.2</version>
+	    <scope>test</scope>
+	</dependency>
+    
   </dependencies>
   
   <build>

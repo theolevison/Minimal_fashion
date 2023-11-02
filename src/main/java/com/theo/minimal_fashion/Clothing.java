@@ -1,23 +1,29 @@
 package com.theo.minimal_fashion;
 
-public abstract class Clothing {
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+
+@DynamoDbBean
+public class Clothing {
 	private String name;
-	private int id;
+	private String id;
 	private int condition;
 	private int daysWorn;
 	private int temperatureRating;
 	private Boolean layerable;
 	private double styleRating;
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getId() {
+	@DynamoDbPartitionKey
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public int getCondition() {
