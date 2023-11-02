@@ -1,3 +1,5 @@
+package com.theo.minimal_fashion;
+
 import java.util.Arrays;
 
 public class Outfit {
@@ -14,8 +16,8 @@ public class Outfit {
 	}
 	
 	private void calculateTemperatureRating() {
-		temperatureRating = Arrays.stream(torsoClothing).map(Clothing::getTemperatureRating).reduce(0, Integer::sum)/torsoClothing.length
-		+ Arrays.stream(legClothing).map(Clothing::getTemperatureRating).reduce(0, Integer::sum)/legClothing.length;
+		temperatureRating = Arrays.stream(torsoClothing).map(Clothing::getTemperatureRating).reduce(0, Integer::sum)
+		+ Arrays.stream(legClothing).map(Clothing::getTemperatureRating).reduce(0, Integer::sum);
 	}
 
 	public int getTemperatureRating() {

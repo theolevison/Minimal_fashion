@@ -1,3 +1,4 @@
+package com.theo.minimal_fashion;
 
 public class Person {
 	private String name;

@@ -1,3 +1,5 @@
+package com.theo.minimal_fashion;
+
 public abstract class Clothing {
 	private String name;
 	private int id;

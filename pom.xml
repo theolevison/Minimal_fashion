@@ -3,6 +3,16 @@
   <groupId>Minimal_fashion</groupId>
   <artifactId>Minimal_fashion</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-engine</artifactId>
+	    <version>5.10.0</version>
+	    <scope>test</scope>
+	</dependency>
+  </dependencies>
+  
   <build>
     <plugins>
       <plugin>

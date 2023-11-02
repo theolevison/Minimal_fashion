@@ -1,3 +1,5 @@
+package com.theo.minimal_fashion;
+
 public class Controller {
 	public static void main(String[] args) {
 		if (args.length > 0) {
