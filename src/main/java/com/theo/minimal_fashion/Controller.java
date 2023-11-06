@@ -26,7 +26,7 @@ public class Controller {
 			//clothingTable.createTable();
 			
 			//create object to put in table
-			Torso tshirt = new Torso();
+			Clothing tshirt = new Clothing();
 			tshirt.setId("red tshirt");
 			tshirt.setCondition(0);
 			tshirt.setDaysWorn(0);
@@ -34,7 +34,7 @@ public class Controller {
 			tshirt.setStyleRating(0);
 			tshirt.setTemperatureRating(5);
 			tshirt.setName("red tshirt");
-			System.out.println(tshirt.toString());
+			tshirt.setTypeOfClothing("Torso");
 			clothingTable.putItem(tshirt);
 			
 			
@@ -44,8 +44,7 @@ public class Controller {
 			
 			try {
 	            // If there is no matching item, GetItem does not return any data.
-				//TODO: solve problem of retrieving an abstract class from the table
-				Clothing thing =  clothingTable.getItem(Key.builder().partitionValue("red tshirt").build());
+				Clothing thing = clothingTable.getItem(Key.builder().partitionValue("Torso").sortValue("red tshirt").build());
 				System.out.println(thing.getName());
 
 	        } catch (Exception e) {

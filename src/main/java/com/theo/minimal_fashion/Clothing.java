@@ -1,6 +1,7 @@
 package com.theo.minimal_fashion;
 
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
 @DynamoDbBean
@@ -12,6 +13,9 @@ public class Clothing {
 	private int temperatureRating;
 	private Boolean layerable;
 	private double styleRating;
+	private String typeOfClothing;
+	
+	//Composite primary key: typeOfClothing, id
 	
 	public String getName() {
 		return name;
@@ -19,7 +23,7 @@ public class Clothing {
 	public void setName(String name) {
 		this.name = name;
 	}
-	@DynamoDbPartitionKey
+	@DynamoDbSortKey
 	public String getId() {
 		return id;
 	}
@@ -55,5 +59,12 @@ public class Clothing {
 	}
 	public void setStyleRating(double d) {
 		this.styleRating = d;
+	}
+	@DynamoDbPartitionKey
+	public String getTypeOfClothing() {
+		return typeOfClothing;
+	}
+	public void setTypeOfClothing(String typeOfClothing) {
+		this.typeOfClothing = typeOfClothing;
 	}
 }
