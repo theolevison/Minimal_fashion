@@ -5,6 +5,7 @@ import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
 import software.amazon.awssdk.enhanced.dynamodb.Key;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
 import software.amazon.awssdk.services.dynamodb.model.DynamoDbException;
+import software.amazon.awssdk.services.dynamodb.model.ResourceInUseException;
 
 
 public class Controller {
@@ -22,8 +23,12 @@ public class Controller {
 			//do stuff
 			System.out.println("started");
 			
-			//TODO: check if table already exists
-			//clothingTable.createTable();
+			try {
+				clothingTable.createTable();
+			} catch (ResourceInUseException e) {
+				//table already exists, consume error & proceed
+			}
+			
 			
 			//create object to put in table
 			Clothing tshirt = new Clothing();
@@ -40,12 +45,15 @@ public class Controller {
 			
 			
 			//retrieve clothing
-			
-			
 			try {
 	            // If there is no matching item, GetItem does not return any data.
 				Clothing thing = clothingTable.getItem(Key.builder().partitionValue("Torso").sortValue("red tshirt").build());
-				System.out.println(thing.getName());
+				
+				if (thing == null) {
+					//key does not map to an item
+				} else {
+					System.out.println(thing.getName());
+				}
 
 	        } catch (Exception e) {
 	            System.err.println(e.getMessage());
