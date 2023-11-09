@@ -31,15 +31,15 @@ public class Controller {
 			
 			
 			//create object to put in table
-			Clothing tshirt = new Clothing();
-			tshirt.setId("red tshirt");
-			tshirt.setCondition(0);
-			tshirt.setDaysWorn(0);
+			//TODO: use a factory method to bring back Torso, Legs etc
+			TorsoClothingFactory tcf = new TorsoClothingFactory();
+			Clothing tshirt = tcf.setupClothing("red tshirt");
+			//all optional
+			tshirt.setCondition(10);
 			tshirt.setLayerable(true);
 			tshirt.setStyleRating(0);
 			tshirt.setTemperatureRating(5);
-			tshirt.setName("red tshirt");
-			tshirt.setTypeOfClothing("Torso");
+			
 			clothingTable.putItem(tshirt);
 			
 			
@@ -48,6 +48,8 @@ public class Controller {
 			try {
 	            // If there is no matching item, GetItem does not return any data.
 				Clothing thing = clothingTable.getItem(Key.builder().partitionValue("Torso").sortValue("red tshirt").build());
+				//gets data from table and creates a new object of type Clothing. We want to intercept it, and create a type of Torso, Legs etc
+				//TODO: why not just have multiple tables of different Classes?
 				
 				if (thing == null) {
 					//key does not map to an item

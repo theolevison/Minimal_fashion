@@ -5,7 +5,8 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortK
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
 @DynamoDbBean
-public class Clothing {
+public abstract class Clothing {
+	//TODO: this is abstract instead of interface, I think that's fine but noted to cya
 	private String name;
 	private String id;
 	private int condition;
@@ -15,20 +16,22 @@ public class Clothing {
 	private double styleRating;
 	private String typeOfClothing;
 	
+	public void setup(String name) {
+		this.name = name;
+		id = name;
+		daysWorn = 0;
+		specificSetup();
+	}
+	
+	public abstract void specificSetup();
 	//Composite primary key: typeOfClothing, id
 	
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	@DynamoDbSortKey
 	public String getId() {
 		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
 	}
 	public int getCondition() {
 		return condition;
