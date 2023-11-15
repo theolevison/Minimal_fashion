@@ -25,6 +25,7 @@ public class Controller {
 			
 			try {
 				clothingTable.createTable();
+				System.out.println("Created table");
 			} catch (ResourceInUseException e) {
 				//table already exists, consume error & proceed
 			}
@@ -42,11 +43,10 @@ public class Controller {
 			
 			clothingTable.putItem(tshirt);
 			
-			
-			
 			//retrieve clothing
 			try {
 	            // If there is no matching item, GetItem does not return any data.
+				//TODO: doesn't work because Clothing is abstract, so the AWS builder can't make one, I do feel that a relational database would be better, I'm not really using dynamo for it's purpose
 				Clothing thing = clothingTable.getItem(Key.builder().partitionValue("Torso").sortValue("red tshirt").build());
 				//gets data from table and creates a new object of type Clothing. We want to intercept it, and create a type of Torso, Legs etc
 				//TODO: why not just have multiple tables of different Classes?
@@ -59,7 +59,6 @@ public class Controller {
 
 	        } catch (Exception e) {
 	            System.err.println(e.getMessage());
-	            System.out.println("whoops");
 	            System.exit(1);
 	        }
 		}

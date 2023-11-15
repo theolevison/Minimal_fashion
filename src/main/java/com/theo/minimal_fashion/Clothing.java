@@ -29,9 +29,15 @@ public abstract class Clothing {
 	public String getName() {
 		return name;
 	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	@DynamoDbSortKey
 	public String getId() {
 		return id;
+	}
+	public void setId(String id) {
+		this.id =id;
 	}
 	public int getCondition() {
 		return condition;

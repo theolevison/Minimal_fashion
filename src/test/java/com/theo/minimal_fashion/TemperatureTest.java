@@ -10,12 +10,11 @@ public class TemperatureTest{
 	@Test
 	@DisplayName("5 + 5 = 10")
 	void tshirtAndShorts() {
-		Clothing tshirt1 = new Clothing();
-		Clothing shorts = new Clothing();
-		tshirt1.setTemperatureRating(5);
-		shorts.setTemperatureRating(5);
+		TorsoClothingFactory tcf = new TorsoClothingFactory();
+		Clothing tshirt = tcf.setupClothing("red tshirt");
+		tshirt.setTemperatureRating(5);
 		
-		Outfit outfit1 = new Outfit(new Clothing[]{shorts, tshirt1});
+		Outfit outfit1 = new Outfit(new Clothing[]{tshirt});
 		assertEquals(10, outfit1.getTemperatureRating());
 	}
 }
