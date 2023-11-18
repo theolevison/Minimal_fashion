@@ -1,6 +1,7 @@
 package com.theo.minimal_fashion;
 
 public class Controller {
+	private Person person;
 	
 	public static void main(String[] args) {
 		if (args.length > 0) {
@@ -32,7 +33,17 @@ public class Controller {
 			db.put(tshirt);
 			db.superGet("Torso", "red tshirt");
 			//Clothing testShirt = db.get("Torso", "red tshirt");
-			//System.out.println(testShirt);
 		}
+	}
+	
+	public void addPerson(String name) {
+		if (person.equals(null)) {
+			person = new Person(name);
+		}
+	}
+	
+	public void addClothing(ClothingFactory cf) {
+		Clothing clothing = cf.createClothing();
+		person.addClothingKeys(clothing);
 	}
 }

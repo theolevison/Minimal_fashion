@@ -21,7 +21,7 @@ public abstract class Clothing {
 	
 	@DynamoDbPartitionKey
 	public String getTypeOfClothing() {
-		return typeOfClothing;
+		return this.getClass().getSimpleName();
 	}
 	public void setTypeOfClothing(String typeOfClothing) {
 		this.typeOfClothing = typeOfClothing;

@@ -10,8 +10,8 @@ public class Torso extends Clothing{
 	public void setup(String name) {
 		setName(name);
 		setId(name);
-		setTypeOfClothing("Torso");
 		setDaysWorn(0);
+		//TODO: trigger asking person more questions about this specific piece of clothing
 	}
 	
 	public Boolean getLayerable() {
