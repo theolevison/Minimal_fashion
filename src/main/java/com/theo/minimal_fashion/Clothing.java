@@ -6,69 +6,12 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
 @DynamoDbBean
 public abstract class Clothing {
-	//TODO: this is abstract instead of interface, I think that's fine but noted to cya
-	private String name;
 	private String id;
-	private int condition;
-	private int daysWorn;
-	private int temperatureRating;
-	private Boolean layerable;
-	private double styleRating;
 	private String typeOfClothing;
 	
-	public void setup(String name) {
-		this.name = name;
-		id = name;
-		daysWorn = 0;
-		specificSetup();
-	}
+	//TODO: this is abstract instead of interface, I think that's fine but noted to cya
+	public abstract void setup(String name);
 	
-	public abstract void specificSetup();
-	//Composite primary key: typeOfClothing, id
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	@DynamoDbSortKey
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id =id;
-	}
-	public int getCondition() {
-		return condition;
-	}
-	public void setCondition(int condition) {
-		this.condition = condition;
-	}
-	public int getDaysWorn() {
-		return daysWorn;
-	}
-	public void setDaysWorn(int daysWorn) {
-		this.daysWorn = daysWorn;
-	}
-	public int getTemperatureRating() {
-		return temperatureRating;
-	}
-	public void setTemperatureRating(int temperatureRating) {
-		this.temperatureRating = temperatureRating;
-	}
-	public Boolean getLayerable() {
-		return layerable;
-	}
-	public void setLayerable(Boolean layerable) {
-		this.layerable = layerable;
-	}
-	public double getStyleRating() {
-		return styleRating;
-	}
-	public void setStyleRating(double d) {
-		this.styleRating = d;
-	}
 	@DynamoDbPartitionKey
 	public String getTypeOfClothing() {
 		return typeOfClothing;
@@ -76,4 +19,26 @@ public abstract class Clothing {
 	public void setTypeOfClothing(String typeOfClothing) {
 		this.typeOfClothing = typeOfClothing;
 	}
+	
+	@DynamoDbSortKey
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id =id;
+	}
 }
+
+/*
+@DynamoDbBean
+public interface Clothing {
+	//TODO: this is abstract instead of interface, I think that's fine but noted to cya
+	public void setup(String name);
+	
+	@DynamoDbPartitionKey
+	public String getTypeOfClothing();
+	
+	@DynamoDbSortKey
+	public String getId();
+}
+*/
