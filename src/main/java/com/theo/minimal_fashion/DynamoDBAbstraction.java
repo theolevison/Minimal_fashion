@@ -81,6 +81,7 @@ public class DynamoDBAbstraction {
 	                System.out.println("Amazon DynamoDB table attributes: \n");
 	                for (String key1 : keys) {
 	                    System.out.format("%s: %s\n", key1, returnedItem.get(key1).toString());
+	                    //TODO: make this create a torso object using the factory
 	                }
 	            }
 

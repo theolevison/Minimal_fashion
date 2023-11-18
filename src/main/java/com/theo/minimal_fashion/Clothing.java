@@ -7,10 +7,17 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 @DynamoDbBean
 public abstract class Clothing {
 	private String id;
+	private String name;
 	private String typeOfClothing;
+	private int temperatureRating;
+	private double styleRating;
+	private int condition;
+	private int daysWorn;
 	
-	//TODO: this is abstract instead of interface, I think that's fine but noted to cya
 	public abstract void setup(String name);
+	//TODO: will probably end up moving this client side anyway, using dynamo for style rules/attributes/personal profiles
+	
+	//Composite primary key: typeOfClothing, id
 	
 	@DynamoDbPartitionKey
 	public String getTypeOfClothing() {
@@ -27,18 +34,39 @@ public abstract class Clothing {
 	public void setId(String id) {
 		this.id =id;
 	}
-}
-
-/*
-@DynamoDbBean
-public interface Clothing {
-	//TODO: this is abstract instead of interface, I think that's fine but noted to cya
-	public void setup(String name);
 	
-	@DynamoDbPartitionKey
-	public String getTypeOfClothing();
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	
-	@DynamoDbSortKey
-	public String getId();
+	public int getTemperatureRating() {
+		return temperatureRating;
+	}
+	public void setTemperatureRating(int temperatureRating) {
+		this.temperatureRating = temperatureRating;
+	}
+	
+	public double getStyleRating() {
+		return styleRating;
+	}
+	public void setStyleRating(double d) {
+		this.styleRating = d;
+	}
+	
+	public int getCondition() {
+		return condition;
+	}
+	public void setCondition(int condition) {
+		this.condition = condition;
+	}
+	
+	public int getDaysWorn() {
+		return daysWorn;
+	}
+	public void setDaysWorn(int daysWorn) {
+		this.daysWorn = daysWorn;
+	}
 }
-*/
